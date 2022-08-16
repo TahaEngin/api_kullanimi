@@ -2,7 +2,6 @@ import 'package:api_kullanimi/service.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'dart:html';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -33,12 +32,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
+      body: FutureBuilder(future: fetch(),builder: ((context, snapshot) {
+        return ListView.builder(
         itemCount: users.length,
         itemBuilder: (BuildContext context, int index) {
           return Text(users[index].name!);
         },
-      ),
+      );
+      })),
     );
   }
 }
