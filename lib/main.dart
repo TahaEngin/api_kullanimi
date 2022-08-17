@@ -33,18 +33,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(future: fetch(),builder: ((context, snapshot) {
-        return ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
+      appBar: AppBar(),
+        body: FutureBuilder(future: fetch(),builder: ((context, snapshot) {
+          return ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfo(index, users))),
             child: Card(
-              child: Text(users[index].name!)),
-          );
-        },
-      );
-      })),
-    );
+              child:Card(
+                child: SizedBox(
+                  height: 70,
+                  child: Center(
+                    child: Text(
+                      users[index].name!,
+                      style: TextStyle(fontSize: 20),)
+                      )
+                      )
+                      )
+                      )
+                      );
+              });
+          }
+        )
+        )
+        );
+        }
   }
-}
