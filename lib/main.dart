@@ -2,6 +2,7 @@ import 'package:api_kullanimi/service.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'user_info.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -36,7 +37,11 @@ class _MyHomePageState extends State<MyHomePage> {
         return ListView.builder(
         itemCount: users.length,
         itemBuilder: (BuildContext context, int index) {
-          return Text(users[index].name!);
+          return GestureDetector(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfo(index, users))),
+            child: Card(
+              child: Text(users[index].name!)),
+          );
         },
       );
       })),
