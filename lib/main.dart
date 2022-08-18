@@ -1,4 +1,5 @@
 import 'package:api_kullanimi/service.dart';
+import 'package:api_kullanimi/size_variables.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
@@ -32,6 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
     users = await userService.fetchUsers() ?? [];
   }
   Widget build(BuildContext context) {
+    size_variables sizeVariables = size_variables(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width);
     return Scaffold(
       appBar: AppBar(),
         body: FutureBuilder(future: fetch(),builder: ((context, snapshot) {
@@ -40,15 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfo(index, users))),
-            child: Card(
               child:Card(
                 child: SizedBox(
-                  height: 70,
+                  height: sizeVariables.screenH/7,
                   child: Center(
                     child: Text(
                       users[index].name!,
-                      style: TextStyle(fontSize: 20),)
-                      )
+                      style: TextStyle(fontSize: (sizeVariables.screenH/49)),)
                       )
                       )
                       )
