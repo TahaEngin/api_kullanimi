@@ -1,13 +1,13 @@
-import 'package:api_kullanimi/card.dart';
-import 'package:api_kullanimi/column.dart';
-import 'package:api_kullanimi/container.dart';
-import 'package:api_kullanimi/row.dart';
-import 'package:api_kullanimi/service.dart';
-import 'package:api_kullanimi/text.dart';
+import 'package:api_kullanimi/viewmodel/card.dart';
+import 'package:api_kullanimi/viewmodel/column.dart';
+import 'package:api_kullanimi/viewmodel/container.dart';
+import 'package:api_kullanimi/viewmodel/row.dart';
+import 'package:api_kullanimi/model/service.dart';
+import 'package:api_kullanimi/viewmodel/text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:api_kullanimi/nothing.dart';
-import 'package:api_kullanimi/size_variables.dart';
+import 'package:api_kullanimi/viewmodel/nothing.dart';
+import 'package:api_kullanimi/model/size_variables.dart';
 
 class UserInfo extends StatelessWidget {
    List<User> users2;

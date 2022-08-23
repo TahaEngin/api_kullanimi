@@ -1,6 +1,6 @@
-import 'package:api_kullanimi/text.dart';
+import 'package:api_kullanimi/viewmodel/text.dart';
 import 'package:flutter/material.dart';
-import 'package:api_kullanimi/size_variables.dart';
+import 'package:api_kullanimi/model/size_variables.dart';
 
 class row1 extends StatelessWidget {
   Widget text2;

@@ -1,5 +1,5 @@
-import 'package:api_kullanimi/column.dart';
-import 'package:api_kullanimi/container.dart';
+import 'package:api_kullanimi/viewmodel/column.dart';
+import 'package:api_kullanimi/viewmodel/container.dart';
 import 'package:flutter/material.dart';
 
 class CardTasarim extends StatelessWidget {

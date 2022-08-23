@@ -1,9 +1,10 @@
-import 'package:api_kullanimi/service.dart';
-import 'package:api_kullanimi/size_variables.dart';
+import 'package:api_kullanimi/model/service.dart';
+import 'package:api_kullanimi/model/size_variables.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'user_info.dart';
+import 'package:api_kullanimi/model/fetchUsers.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -22,16 +23,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late final UserService userService;
-  List<User> users = [];
-  @override
-  void initState() {
-    super.initState();
-    userService = UserService1(Dio(BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com/users')));
-  }
-  Future<void> fetch() async{
-    users = await userService.fetchUsers() ?? [];
-  }
   Widget build(BuildContext context) {
     size_variables sizeVariables = size_variables(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width);
     return Scaffold(
