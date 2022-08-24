@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'user_info.dart';
-import 'package:api_kullanimi/model/fetchUsers.dart';
+import 'package:api_kullanimi/model/user.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -23,6 +23,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<User> users = [];
+  late final UserService1 userService;
+  void initState() {
+    super.initState();
+    userService = UserService1(Dio(BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com/users')));
+  }
+  @override
+  Future<void> fetch() async{
+    users = await userService.fetchUsers() ?? [];
+  }
   Widget build(BuildContext context) {
     size_variables sizeVariables = size_variables(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width);
     return Scaffold(

@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:api_kullanimi/viewmodel/nothing.dart';
 import 'package:api_kullanimi/model/size_variables.dart';
+import 'package:api_kullanimi/model/user.dart';
 
 class UserInfo extends StatelessWidget {
    List<User> users2;
