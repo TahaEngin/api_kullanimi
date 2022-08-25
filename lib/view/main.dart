@@ -1,10 +1,15 @@
+import 'package:api_kullanimi/model/UserKayitGet.dart';
 import 'package:api_kullanimi/model/service.dart';
 import 'package:api_kullanimi/model/size_variables.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'user_info.dart';
 import 'package:api_kullanimi/model/user.dart';
+import 'package:api_kullanimi/model/UserKayit.dart';
+import 'package:api_kullanimi/model/UserKayitSil.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -31,12 +36,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   @override
   Future<void> fetch() async{
-    users = await userService.fetchUsers() ?? [];
+    if(kayitdurum() == true){
+      setState(() {
+        users = kayitgetir();
+      });
+    }
+    else{
+      users = await userService.fetchUsers() ?? [];
+      kaydet(users);
+    }
   }
   Widget build(BuildContext context) {
     size_variables sizeVariables = size_variables(MediaQuery.of(context).size.height,MediaQuery.of(context).size.width);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(actions: [
+        IconButton(onPressed:(){
+          setState(() {
+            kayitsil();
+          });
+        },
+        icon: Icon(Icons.logout))
+      ],),
         body: FutureBuilder(future: fetch(),builder: ((context, snapshot) {
           return ListView.builder(
           itemCount: users.length,
